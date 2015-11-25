@@ -1,0 +1,39 @@
+<?php
+namespace app\models;
+use yii\db\ActiveRecord;
+use yii;
+
+//接口参数
+class order extends ActiveRecord{
+
+//    public $id;//订单id
+//    public $coachType;//辅导类型：
+//    public $title;//订单title
+//    public $tuid;
+//    public $suid;
+//    public $guui;
+//
+//    public $timeLong;   //时长
+//    public $price;      //小时单价
+//    public $allTimeLong;   //专题课程时长（如一天，一个月）
+//    public $allPrice;       //专题课程总价
+//    public $subject;    //科目
+//    public $orderCreatTime;
+//
+//    public $startTime;  //订单有效开始时间
+//    public $youhuijuan;//订单有效结束时间
+//    public $address;//辅导地点经纬度
+//
+//    public $limitNumber;//限制人数
+//    public $jionNumber;//参与人数
+//    public $info;//订单描述
+//    public $state;
+
+
+    public  static function  tableName()
+    {
+        return 'orderList';
+    }
+
+
+}
