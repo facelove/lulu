@@ -6,13 +6,14 @@ use app\models\UserLogin;
 use app\models\Student;
 use app\models\Teacher;
 use app\models\Organization;
-use app\models\OrderDataList;
-use app\models\Product;
+use app\models\Order;
+use app\models\OrderInfo;
 use yii\db\Exception;
 use yii\helpers\ArrayHelper;
+use yii\helpers\BaseHtmlPurifier;
 use yii\validators\BooleanValidator;
 
-//接口参数 action=1增 2删3 修改4查询
+//接口参数 action=1发布订单 2取消订单 3修改订单4查询订单
 //生成订单// uid role coachType o_title o_des o_role price unit count  limitNumber jionNumber subject ,address latitude longitude
 //取消订单   uid code
 //修改订单   只支持修改限定人数，地址
@@ -53,7 +54,7 @@ class OrderOperation extends Controller
         try
         {
             $transaction=$connection->beginTransaction();//事物开始
-            $order=new OrderDataList();
+            $order=new Order();
             $order=\BaseFunction::fileArrayToModel($post,$order);
             $order->addtime=time();
             $order->classid=$classid;
@@ -62,10 +63,15 @@ class OrderOperation extends Controller
             $order->o_role=1;
             $order->save();
 
-            $product=new Product();
-            $order=\BaseFunction::fileArrayToModel($post,$product);
-            $product->code=$code;
-            $product->save();
+            $OrderInfo=new OrderInfo();
+            $order=\BaseFunction::fileArrayToModel($post,$OrderInfo);
+            if(intval($order->coachType)==1)
+            {
+                $order->limitNumber=1;
+                $order->jionNumber=1;
+            }
+            $OrderInfo->code=$code;
+            $OrderInfo->save();
             $transaction->commit();//事物结束
             \BaseFunction::returnJson('');
         }
@@ -86,7 +92,7 @@ class OrderOperation extends Controller
         try
         {
             $transaction=$connection->beginTransaction();//事物开始
-            $order=OrderDataList::find()
+            $order=Order::find()
                 ->where(['uid'=>$uid,'code'=>$code])
                 ->one();
             if(empty($order))
@@ -133,12 +139,12 @@ class OrderOperation extends Controller
         try
         {
             $transaction=$connection->beginTransaction();//事物开始
-            $order=OrderDataList::find()
+            $order=Order::find()
             ->where(['uid'=>$uid,'code'=>$code])
             ->one();
              if(!empty($order))
              {
-                 $product=Product::find()
+                 $OrderInfo=OrderInfo::find()
                      ->where(['uid'=>$uid,'code'=>$code])
                      ->one();
                  if(empty($order))
@@ -151,7 +157,7 @@ class OrderOperation extends Controller
                      if(isset($_POST['limitNumber']))
                      {
                          $limit=intval($_POST['limitNumber']);
-                         $product->limitNumber=7;
+                         $OrderInfo->limitNumber=7;
                      }
                      if(isset($_POST['address']))
                      {
@@ -165,7 +171,7 @@ class OrderOperation extends Controller
                      {
                          $longitude=floatval($_POST['longitude']);
                      }
-                     $product->save();
+                     $OrderInfo->save();
 
                      $result=1;
                  }
@@ -206,7 +212,7 @@ class OrderOperation extends Controller
         try
         {
             $transaction=$connection->beginTransaction();//事物开始
-            $order=OrderDataList::find()
+            $order=Order::find()
                 ->with('orders')
                 ->where(['uid'=>$uid,'code'=>$code])
                 ->one();

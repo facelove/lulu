@@ -6,8 +6,8 @@ use app\models\UserLogin;
 use app\models\Student;
 use app\models\Teacher;
 use app\models\Organization;
-use app\models\OrderDataList;
-use app\models\Product;
+use app\models\Order;
+use app\models\OrderInfo;
 //接口参数 action=1增 2删3 修改4查询
 class OrderOperation extends Controller
 {
@@ -36,7 +36,7 @@ class OrderOperation extends Controller
         $classid=strval(time());
         $code=md5($classid.'123',true);
 
-        $order=new OrderDataList();
+        $order=new Order();
 
         $order=\BaseFunction::fileArrayToModel($post,$order);
         $order->addtime=time();
@@ -46,9 +46,9 @@ class OrderOperation extends Controller
         $order->o_role=1;
         $order->save();
 
-        $product=new Product();
-        $order=\BaseFunction::fileArrayToModel($post,$product);
-        $product->code=$code;
+        $OrderInfo=new OrderInfo();
+        $order=\BaseFunction::fileArrayToModel($post,$OrderInfo);
+        $OrderInfo->code=$code;
 
 
 

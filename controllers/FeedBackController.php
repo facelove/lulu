@@ -20,31 +20,4 @@ class FeedbackController extends Controller
         $feedback1->save();
         \BaseFunction::returnJson('');
     }
-
-    
-
-
-//    public static  function actionTest1()
-//    {
-//        $query=feedback::find()
-//            ->joinWith('orders')
-//            ->where(['id'=>'18'])
-//            ->one();
-//
-//        $student=$query->orders;
-//
-//        $query->uid=$student->attributes;
-//
-//        if(!empty($query))
-//        {
-//            \BaseFunction::returnJson($query);
-//        }
-//        else
-//        {
-//            \BaseFunction::returnJson('asdasdas');
-//        }
-//    }
-
-
-
 }

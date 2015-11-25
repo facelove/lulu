@@ -25,7 +25,7 @@ class CardData extends ActiveRecord{
     public static  function  makeCard($card_Data)
     {
         $card1KeyArray=array('dataid','dataType','imgURL','openType','superScript','subject');
-        $card2KeyArray=array('dataid','dataType','imgURL','openType','superScript','cocoaType');
+        $card2KeyArray=array('dataid','dataType','imgURL','openType','title','superScript','cocoaType');
         $card3KeyArray=array('dataid','dataType','imgURL','openType','title','des','open_pid','open_url','open_view');
         $card4KeyArray=array('dataid','dataType','imgURL','openType','title','des','address');
         $card5KeyArray=array('dataid','dataType','imgURL','openType','suid');

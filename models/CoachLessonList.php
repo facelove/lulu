@@ -16,7 +16,7 @@ class CoachLessonList extends ActiveRecord{
     }
     public  function getOrders()
     {
-        return $this->hasMany(Product::className(),['o_code'=>'code']);
+        return $this->hasMany(OrderInfo::className(),['o_code'=>'code']);
     }
 
 }

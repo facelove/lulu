@@ -4,7 +4,7 @@ use yii\db\ActiveRecord;
 use yii;
 
 //接口参数
-class Product extends ActiveRecord{
+class OrderInfo extends ActiveRecord{
 
     public $id;//订单id
     public $title;//订单title
@@ -34,7 +34,7 @@ class Product extends ActiveRecord{
 
     public  static function  tableName()
     {
-        return 'product';
+        return 'O_orderInfo';
     }
 
 
