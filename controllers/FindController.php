@@ -10,7 +10,7 @@ use app\models\Organization;
 class FindController extends Controller
 {
     public  function actionIndex()
-    {
+    { //uid subject grade
         $action=\BaseFunction::getParam('action',true);
         if($action==1)
         {
