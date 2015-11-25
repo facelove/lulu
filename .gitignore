@@ -25,3 +25,9 @@ composer.phar
 phpunit.phar
 # local phpunit config
 /phpunit.xml
+# upload  file to sever
+/ios
+# DB configure file
+/config
+
+
