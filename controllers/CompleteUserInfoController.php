@@ -123,6 +123,7 @@ class CompleteUserInfoController extends Controller
             \BaseFunction::returnJson('','A00001',json_encode($rs));
         }
 
+        
 
     }
 
