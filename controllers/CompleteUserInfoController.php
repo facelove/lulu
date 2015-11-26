@@ -122,11 +122,7 @@ class CompleteUserInfoController extends Controller
             $rs['info']=$e->getMessage();//异常信息
             \BaseFunction::returnJson('','A00001',json_encode($rs));
         }
-
-        
-
     }
-
     private   function saveKemuToDB($subject,$grade,$uid)
     {
         $query= new CoachLessonList;

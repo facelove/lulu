@@ -8,7 +8,7 @@ class Feedback extends ActiveRecord{
 
     public  static function  tableName()
     {
-        return 'feedback';
+        return 'U_feedback';
     }
 
 

@@ -24,10 +24,9 @@ rm -Rf "$PRODUCT"
 
 mkdir -p "$PRODUCT"
 
-cp -r controllers "$PRODUCT"
-cp -r models "$PRODUCT"
+cp -rf controllers "$PRODUCT"
+cp -rf models "$PRODUCT"
 
-#cp -r views "$PRODUCT"
 
 
 #CP
