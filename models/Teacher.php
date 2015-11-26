@@ -9,6 +9,6 @@ class Teacher extends ActiveRecord{
 
     public  static function  tableName()
     {
-        return 'base_teacher';
+        return 'U_teacher';
     }
 }
