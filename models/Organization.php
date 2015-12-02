@@ -2,7 +2,7 @@
 namespace app\models;
 use yii\db\ActiveRecord;
 use yii;
-class organization extends ActiveRecord{
+class Organization extends ActiveRecord{
 
     const STATUS_ACTIVE= 28;
 
